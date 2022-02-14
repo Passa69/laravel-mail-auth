@@ -16,3 +16,8 @@ Route::post('/register', 'Auth\RegisterController@register') -> name('register')
 
 Route::post('/login', 'Auth\LoginController@login') -> name('login');
 Route::get('/logout', 'Auth\LoginController@logout') -> name('logout');
+
+Route::middleware('auth')->group(function() {
+    
+    Route::get('/post/delete/{id}', 'GuestController@delete') -> name('delete');
+});
