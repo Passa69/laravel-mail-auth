@@ -23,7 +23,7 @@ class ApiController extends Controller
 
         $video -> delete();
 
-        Mail::to('test@test.com') -> send(new VideoDeleteMail());
+        Mail::to('test@test.com') -> send(new VideoDeleteMail($video));
 
         return json_encode($video);
     }

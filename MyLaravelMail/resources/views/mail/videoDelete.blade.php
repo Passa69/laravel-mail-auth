@@ -1,1 +1,1 @@
-Il Videogioco è stato CANCELLATO dalla lista!!
+Il Videogioco {{ $video -> title }} è stato CANCELLATO dalla lista!!

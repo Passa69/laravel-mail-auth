@@ -16,9 +16,9 @@ class VideoDeleteMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($video)
     {
-        //
+        $this -> video = $video;
     }
 
     /**
@@ -29,6 +29,7 @@ class VideoDeleteMail extends Mailable
     public function build()
     {
         return $this->from('admin@miosito.com')
-                    ->view('mail.videoDelete');
+                    ->view('mail.videoDelete')
+                    ->with('video', $this->video);
     }
 }
