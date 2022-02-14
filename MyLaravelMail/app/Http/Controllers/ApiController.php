@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 use App\Videogame;
+use App\Mail\VideoDeleteMail;
 
 class ApiController extends Controller
 {
@@ -20,6 +22,8 @@ class ApiController extends Controller
         $video = Videogame::findOrFail($id);
 
         $video -> delete();
+
+        Mail::to('test@test.com') -> send(new VideoDeleteMail());
 
         return json_encode($video);
     }

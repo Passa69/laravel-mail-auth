@@ -1,0 +1,1 @@
+Il Videogioco è stato CANCELLATO dalla lista!!
