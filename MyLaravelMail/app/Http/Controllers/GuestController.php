@@ -15,12 +15,12 @@ class GuestController extends Controller
         return view('pages.home', compact('videos'));
     }
 
-    public function delete($id) {
+    // public function delete($id) {
 
-        $video = Videogame::findOrFail($id);
+    //     $video = Videogame::findOrFail($id);
 
-        $video -> delete();
+    //     $video -> delete();
 
-        return redirect() -> route('home');
-    }
+    //     return redirect() -> route('home');
+    // }
 }

@@ -1925,15 +1925,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       videos: []
     };
   },
+  props: {
+    user: String
+  },
   mounted: function mounted() {
     var _this = this;
 
+    console.log('user', this.user);
     axios.get('/api/app/list').then(function (r) {
       return _this.videos = r.data;
     })["catch"](function (e) {
@@ -37535,7 +37543,15 @@ var render = function () {
       "table",
       { attrs: { border: "1" } },
       [
-        _vm._m(0),
+        _c("tr", [
+          _c("th", [_vm._v("Title")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Subtitle")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Rating")]),
+          _vm._v(" "),
+          _vm.user ? _c("th", [_vm._v("Action")]) : _vm._e(),
+        ]),
         _vm._v(" "),
         _vm._l(_vm.videos, function (video, i) {
           return _c("tr", { key: i }, [
@@ -37544,6 +37560,19 @@ var render = function () {
             _c("td", [_vm._v(_vm._s(video.subtitle))]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(video.rating))]),
+            _vm._v(" "),
+            _vm.user
+              ? _c("td", [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-danger",
+                      attrs: { href: "/api/app/delete/" + video.id },
+                    },
+                    [_vm._v("DELETE")]
+                  ),
+                ])
+              : _vm._e(),
           ])
         }),
       ],
@@ -37551,20 +37580,7 @@ var render = function () {
     ),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [_vm._v("title")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("subtitle")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("rating")]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

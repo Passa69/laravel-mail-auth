@@ -16,5 +16,5 @@
         @endforeach
     </ul> --}}
 
-    <video-component></video-component>
+    <video-component user="{{ Auth::check() }}"></video-component>
 @endsection

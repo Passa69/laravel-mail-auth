@@ -14,4 +14,13 @@ class ApiController extends Controller
 
         return json_encode($videos);
     }
+
+    public function deleteEvent($id) {
+
+        $video = Videogame::findOrFail($id);
+
+        $video -> delete();
+
+        return redirect() -> route('home');
+    }
 }

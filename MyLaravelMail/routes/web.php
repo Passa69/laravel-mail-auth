@@ -17,9 +17,5 @@ Route::post('/register', 'Auth\RegisterController@register') -> name('register')
 Route::post('/login', 'Auth\LoginController@login') -> name('login');
 Route::get('/logout', 'Auth\LoginController@logout') -> name('logout');
 
-Route::middleware('auth')->group(function() {
-    
-    Route::get('/post/delete/{id}', 'GuestController@delete') -> name('delete');
-});
-
 Route::get('/api/app/list', 'ApiController@getApp') -> name('api.app.list');
+Route::get('/api/app/delete/{id}', 'ApiController@deleteEvent') -> name('api.app.delete');

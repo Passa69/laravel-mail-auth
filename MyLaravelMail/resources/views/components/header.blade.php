@@ -1,9 +1,9 @@
 <header>
     <h1>VIDEOGAMES</h1>
 
-    {{-- @auth
-        <h1>Hi {{ Auth::user() -> name }}!</h1>
-        <a class="btn btn-secondary" href="{{ route('logout') }}">LOGOUT</a>
+    @auth
+        <h2>Hi {{ Auth::user() -> name }}!</h2>
+        <a class="btn btn-danger" href="{{ route('logout') }}">LOGOUT</a>
     @else
         <h1>If you wanne see my site you have to login/register</h1>
 
@@ -43,5 +43,5 @@
             <input type="submit" value="LOGIN">
 
         </form>
-    @endauth --}}
+    @endauth
 </header>
