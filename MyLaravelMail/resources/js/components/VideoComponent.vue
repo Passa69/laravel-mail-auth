@@ -12,7 +12,8 @@
                 <td>{{ video.subtitle }}</td>
                 <td>{{ video.rating }}</td>
                 <td v-if="user">
-                    <a class="btn btn-danger" :href="`/api/app/delete/${video.id}`">DELETE</a>
+                    <!-- <a class="btn btn-danger" :href="`/api/app/delete/${video.id}`">DELETE</a> -->
+                    <button @click="videoDelete(video.id)" class="btn btn-danger">DELETE</button>
                 </td>
             </tr>
         </table>
@@ -30,6 +31,33 @@ export default {
     props: {
 
         user:String
+    },
+    methods: {
+
+        videoDelete(id) {
+
+            axios.get(`/api/app/delete/${id}`)
+             .then(r => {
+
+                 const ind = this.getIndexById(id);
+                 console.log(ind, this.videos);
+                 this.videos.splice(ind, 1);
+             })
+             .catch(e => console.log('e', e));
+        },
+
+        getIndexById(id) {
+            for (let x=0; x<this.videos.lenght; x++) {
+
+                const video = this.videos[x];
+
+                if (video.id == id) {
+                    return x;
+                }
+            }
+
+            return -1;
+        }
     },
     mounted() {
 

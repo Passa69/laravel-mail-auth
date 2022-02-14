@@ -1929,6 +1929,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1938,12 +1939,38 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     user: String
   },
+  methods: {
+    videoDelete: function videoDelete(id) {
+      var _this = this;
+
+      axios.get("/api/app/delete/".concat(id)).then(function (r) {
+        var ind = _this.getIndexById(id);
+
+        console.log(ind, _this.videos);
+
+        _this.videos.splice(ind, 1);
+      })["catch"](function (e) {
+        return console.log('e', e);
+      });
+    },
+    getIndexById: function getIndexById(id) {
+      for (var x = 0; x < this.videos.lenght; x++) {
+        var video = this.videos[x];
+
+        if (video.id == id) {
+          return x;
+        }
+      }
+
+      return -1;
+    }
+  },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
 
     console.log('user', this.user);
     axios.get('/api/app/list').then(function (r) {
-      return _this.videos = r.data;
+      return _this2.videos = r.data;
     })["catch"](function (e) {
       return console.log(e);
     });
@@ -37564,10 +37591,14 @@ var render = function () {
             _vm.user
               ? _c("td", [
                   _c(
-                    "a",
+                    "button",
                     {
                       staticClass: "btn btn-danger",
-                      attrs: { href: "/api/app/delete/" + video.id },
+                      on: {
+                        click: function ($event) {
+                          return _vm.videoDelete(video.id)
+                        },
+                      },
                     },
                     [_vm._v("DELETE")]
                   ),
