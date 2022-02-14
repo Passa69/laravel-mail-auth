@@ -21,3 +21,5 @@ Route::middleware('auth')->group(function() {
     
     Route::get('/post/delete/{id}', 'GuestController@delete') -> name('delete');
 });
+
+Route::get('/api/app/list', 'ApiController@getApp') -> name('api.app.list');

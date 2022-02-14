@@ -1,15 +1,20 @@
 @extends('layouts.main-layout')
 @section('content')
 
-    <br>
+    {{-- <br>
     <ul>
         @foreach ($videos as $video)
             <li>
                 {{ $video -> title }}
                 - {{ $video -> subtitle }}
                 - {{ $video -> rating }}
-                -- <a href="{{ route('delete', $video -> id) }}">DELETE</a><br>
+
+                @auth
+                    -- <a href="{{ route('delete', $video -> id) }}">DELETE</a><br>
+                @endauth
             </li>
         @endforeach
-    </ul>
+    </ul> --}}
+
+    <video-component></video-component>
 @endsection

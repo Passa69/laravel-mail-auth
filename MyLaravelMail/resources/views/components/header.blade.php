@@ -1,7 +1,7 @@
 <header>
     <h1>VIDEOGAMES</h1>
 
-    @auth
+    {{-- @auth
         <h1>Hi {{ Auth::user() -> name }}!</h1>
         <a class="btn btn-secondary" href="{{ route('logout') }}">LOGOUT</a>
     @else
@@ -43,5 +43,5 @@
             <input type="submit" value="LOGIN">
 
         </form>
-    @endauth
+    @endauth --}}
 </header>

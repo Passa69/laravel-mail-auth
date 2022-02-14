@@ -10968,14 +10968,3 @@ body {
   text-align: center;
 }
 
-body li {
-  margin-bottom: 15px;
-}
-
-body li a {
-  background-color: red;
-  padding: 7px;
-  border-radius: 15px;
-  color: white;
-}
-
